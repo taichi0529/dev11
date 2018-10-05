@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -93,6 +92,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="場所" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ogn-TD-PvF">
+                                <rect key="frame" x="20" y="286" width="335" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVe-ht-An2">
+                                <rect key="frame" x="0.0" y="312" width="375" height="160"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="UKr-Yv-a9f"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -100,14 +112,20 @@
                             <constraint firstItem="06N-UH-sa9" firstAttribute="trailing" secondItem="hQb-jz-DAA" secondAttribute="trailing" constant="20" id="1Nf-wb-Nav"/>
                             <constraint firstItem="06N-UH-sa9" firstAttribute="trailing" secondItem="Jd1-Fe-OaD" secondAttribute="trailing" constant="20" id="8qd-qO-0bd"/>
                             <constraint firstItem="Jd1-Fe-OaD" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" constant="20" id="E2x-1e-zfJ"/>
+                            <constraint firstItem="06N-UH-sa9" firstAttribute="trailing" secondItem="Ogn-TD-PvF" secondAttribute="trailing" constant="20" id="HYV-dE-b2T"/>
                             <constraint firstItem="Jd1-Fe-OaD" firstAttribute="top" secondItem="06N-UH-sa9" secondAttribute="top" constant="20" id="KaT-78-Rw3"/>
                             <constraint firstItem="no3-Ca-UZM" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" constant="20" id="KgE-AX-1jy"/>
                             <constraint firstItem="KIZ-kY-uUq" firstAttribute="top" secondItem="Jd1-Fe-OaD" secondAttribute="bottom" constant="5" id="Mv0-hh-KEN"/>
                             <constraint firstItem="no3-Ca-UZM" firstAttribute="top" secondItem="KIZ-kY-uUq" secondAttribute="bottom" constant="10" id="Nbh-tw-XbM"/>
                             <constraint firstItem="KIZ-kY-uUq" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" constant="20" id="S8k-rc-riL"/>
+                            <constraint firstItem="06N-UH-sa9" firstAttribute="trailing" secondItem="xVe-ht-An2" secondAttribute="trailing" id="Si0-KB-kA3"/>
+                            <constraint firstItem="xVe-ht-An2" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" id="XPL-ge-EMX"/>
                             <constraint firstItem="hQb-jz-DAA" firstAttribute="top" secondItem="no3-Ca-UZM" secondAttribute="bottom" constant="5" id="aBw-Wb-r3G"/>
                             <constraint firstItem="06N-UH-sa9" firstAttribute="trailing" secondItem="no3-Ca-UZM" secondAttribute="trailing" constant="20" id="eGp-W2-3Mg"/>
+                            <constraint firstItem="xVe-ht-An2" firstAttribute="top" secondItem="Ogn-TD-PvF" secondAttribute="bottom" constant="5" id="gOt-Yh-woO"/>
                             <constraint firstItem="hQb-jz-DAA" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" constant="20" id="phC-ed-qXt"/>
+                            <constraint firstItem="Ogn-TD-PvF" firstAttribute="leading" secondItem="06N-UH-sa9" secondAttribute="leading" constant="20" id="wDX-HT-sfP"/>
+                            <constraint firstItem="Ogn-TD-PvF" firstAttribute="top" secondItem="hQb-jz-DAA" secondAttribute="bottom" constant="10" id="wr9-8D-gcO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="06N-UH-sa9"/>
                     </view>
@@ -119,6 +137,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapCanvasView" destination="xVe-ht-An2" id="0Kg-cg-0P5"/>
                         <outlet property="noteTextView" destination="Xfr-G5-1YS" id="srI-i6-VXM"/>
                         <outlet property="titleTextField" destination="KIZ-kY-uUq" id="uPO-yv-bjp"/>
                     </connections>
