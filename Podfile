@@ -7,5 +7,7 @@ target 'todo' do
 
   # Pods for todo
   pod 'GoogleMaps'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 
 end
