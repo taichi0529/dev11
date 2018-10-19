@@ -20,6 +20,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyAXQlksHUYHzYU1F_qSi-kZEsGDe-d4FnU")
         FirebaseApp.configure()
+        
+        // ログインしていたら
+        if Auth.auth().currentUser != nil {
+            //Storyboardを指定
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            //Viewcontrollerを指定
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TaskNavigationController")
+            //rootViewControllerに入れる
+            self.window?.rootViewController = initialViewController
+        }
         return true
     }
 
