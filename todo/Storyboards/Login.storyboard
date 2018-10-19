@@ -63,6 +63,13 @@
                                     <constraint firstAttribute="height" constant="45" id="VhM-4U-rwu"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rw1-Ke-hto">
+                                <rect key="frame" x="156.5" y="486" width="62" height="30"/>
+                                <state key="normal" title="利用規約"/>
+                                <connections>
+                                    <action selector="didTouchTermButton:" destination="FqH-Jo-v4a" eventType="touchUpInside" id="8Fd-Op-vZG"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ToDoアプリへようこそ！下記より新規登録もしくはログインしてください。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wql-mH-e98">
                                 <rect key="frame" x="20" y="80" width="335" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -75,11 +82,13 @@
                             <constraint firstItem="v4A-o4-0VC" firstAttribute="trailing" secondItem="J3G-cN-a5z" secondAttribute="trailing" constant="20" id="2C1-ov-JMw"/>
                             <constraint firstItem="J3G-cN-a5z" firstAttribute="top" secondItem="wql-mH-e98" secondAttribute="bottom" constant="60" id="2Dl-qo-Sne"/>
                             <constraint firstItem="5aB-Rv-G9t" firstAttribute="leading" secondItem="v4A-o4-0VC" secondAttribute="leading" constant="20" id="9EM-mT-guj"/>
+                            <constraint firstItem="rw1-Ke-hto" firstAttribute="top" secondItem="dxT-n0-zrJ" secondAttribute="bottom" constant="50" id="J5h-ty-Huq"/>
                             <constraint firstItem="5aB-Rv-G9t" firstAttribute="top" secondItem="J3G-cN-a5z" secondAttribute="bottom" constant="60" id="Ldg-CU-phq"/>
                             <constraint firstItem="wql-mH-e98" firstAttribute="top" secondItem="v4A-o4-0VC" secondAttribute="top" constant="60" id="MBN-au-lFj"/>
                             <constraint firstAttribute="trailing" secondItem="wql-mH-e98" secondAttribute="trailing" constant="20" id="QI6-df-FIE"/>
                             <constraint firstItem="dxT-n0-zrJ" firstAttribute="top" secondItem="5aB-Rv-G9t" secondAttribute="bottom" constant="60" id="RSh-mw-muZ"/>
                             <constraint firstItem="dxT-n0-zrJ" firstAttribute="leading" secondItem="v4A-o4-0VC" secondAttribute="leading" constant="20" id="Vue-Wz-Q4V"/>
+                            <constraint firstItem="rw1-Ke-hto" firstAttribute="centerX" secondItem="SG7-Kp-3ep" secondAttribute="centerX" id="cGE-b4-1FP"/>
                             <constraint firstItem="5aB-Rv-G9t" firstAttribute="centerX" secondItem="SG7-Kp-3ep" secondAttribute="centerX" id="cf8-1L-a22"/>
                             <constraint firstItem="dxT-n0-zrJ" firstAttribute="centerX" secondItem="SG7-Kp-3ep" secondAttribute="centerX" id="fiA-9U-Vep"/>
                             <constraint firstItem="J3G-cN-a5z" firstAttribute="centerX" secondItem="SG7-Kp-3ep" secondAttribute="centerX" id="nZ5-Lh-w97"/>
@@ -99,6 +108,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvs-tk-PQ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1458" y="187"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="H01-rN-9wN">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="WqC-l9-Zko" customClass="WebViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oAj-Vi-EEg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZO6-N1-ffD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <color key="barTintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="利用規約" id="WE9-LH-gfb">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="Twe-oi-9a5">
+                                            <connections>
+                                                <action selector="didTouchCloseButton:" destination="WqC-l9-Zko" id="G4d-iQ-nws"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DVN-ua-B7f">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mlF-cH-xmZ">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ZO6-N1-ffD" firstAttribute="top" secondItem="DVN-ua-B7f" secondAttribute="bottom" id="0iK-2B-k0b"/>
+                            <constraint firstItem="ZO6-N1-ffD" firstAttribute="top" secondItem="4BE-6r-g1W" secondAttribute="top" id="6GJ-Q8-E68"/>
+                            <constraint firstItem="mlF-cH-xmZ" firstAttribute="top" secondItem="ZO6-N1-ffD" secondAttribute="bottom" id="9l0-gT-odK"/>
+                            <constraint firstAttribute="trailing" secondItem="DVN-ua-B7f" secondAttribute="trailing" id="Gtk-Ui-ktk"/>
+                            <constraint firstItem="4BE-6r-g1W" firstAttribute="trailing" secondItem="mlF-cH-xmZ" secondAttribute="trailing" id="Ouj-Pz-ngg"/>
+                            <constraint firstItem="DVN-ua-B7f" firstAttribute="leading" secondItem="oAj-Vi-EEg" secondAttribute="leading" id="Ycn-la-vnF"/>
+                            <constraint firstItem="mlF-cH-xmZ" firstAttribute="leading" secondItem="4BE-6r-g1W" secondAttribute="leading" id="a9T-7E-Mi5"/>
+                            <constraint firstItem="4BE-6r-g1W" firstAttribute="bottom" secondItem="mlF-cH-xmZ" secondAttribute="bottom" id="cmv-fz-cdW"/>
+                            <constraint firstItem="ZO6-N1-ffD" firstAttribute="trailing" secondItem="4BE-6r-g1W" secondAttribute="trailing" id="hMk-bH-OMs"/>
+                            <constraint firstItem="DVN-ua-B7f" firstAttribute="top" secondItem="oAj-Vi-EEg" secondAttribute="top" id="qtI-sl-Aur"/>
+                            <constraint firstItem="ZO6-N1-ffD" firstAttribute="leading" secondItem="4BE-6r-g1W" secondAttribute="leading" id="shq-3d-pIw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4BE-6r-g1W"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="mlF-cH-xmZ" id="8pV-dc-tXL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Idp-II-eU3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-679.20000000000005" y="188.45577211394306"/>
         </scene>
     </scenes>
 </document>

@@ -20,6 +20,10 @@ class LoginViewController: UIViewController, UserDelegate {
         user.delegate = self
     }
     
+    @IBAction func didTouchTermButton(_ sender: Any) {
+        let viewController = storyboard?.instantiateViewController(withIdentifier: "WebViewController")
+        self.present(viewController!, animated: true, completion: nil)
+    }
     
     @IBAction func didTouchNewButton(_ sender: Any) {
         if let credential = getCredential() {
@@ -68,7 +72,6 @@ class LoginViewController: UIViewController, UserDelegate {
     func presentTaskList () {
         //Storyboardを指定
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         let viewController = storyboard.instantiateViewController(withIdentifier: "TaskNavigationController")
         self.present(viewController, animated: true, completion: nil)
     }
