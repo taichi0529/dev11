@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TaskListTableViewController: UITableViewController, TaskCollectionDelegate {
     
@@ -35,6 +36,19 @@ class TaskListTableViewController: UITableViewController, TaskCollectionDelegate
     
     @IBAction func didTouchAddButton(_ sender: Any) {
         self.performSegue(withIdentifier: "showToAddViewController", sender: nil)
+    }
+    
+    @IBAction func didTouchLogoutButton(_ sender: Any) {
+        try! Auth.auth().signOut()
+        //Storyboardを指定
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //Viewcontrollerを指定
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        //rootViewControllerに入れる
+        appDelegate.window?.rootViewController = initialViewController
     }
     
     override func didReceiveMemoryWarning() {
