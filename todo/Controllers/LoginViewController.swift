@@ -71,8 +71,11 @@ class LoginViewController: UIViewController {
     }
     
     func presentTaskList () {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "TaskNavigationController")
-        self.present(viewController!, animated: true, completion: nil)
+        //Storyboardを指定
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TaskNavigationController")
+        self.present(viewController, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

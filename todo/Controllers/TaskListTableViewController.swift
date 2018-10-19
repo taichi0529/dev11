@@ -38,10 +38,11 @@ class TaskListTableViewController: UITableViewController, TaskCollectionDelegate
         self.performSegue(withIdentifier: "showToAddViewController", sender: nil)
     }
     
+    // ログアウト
     @IBAction func didTouchLogoutButton(_ sender: Any) {
         try! Auth.auth().signOut()
         //Storyboardを指定
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
         //Viewcontrollerを指定
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
         
