@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Firebase
 
 class TaskListTableViewController: UITableViewController, TaskCollectionDelegate {
     
     let taskCollection = TaskCollection.shared
+    let user = User.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class TaskListTableViewController: UITableViewController, TaskCollectionDelegate
     
     // ログアウト
     @IBAction func didTouchLogoutButton(_ sender: Any) {
-        try! Auth.auth().signOut()
+        user.logout()
         //Storyboardを指定
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         //Viewcontrollerを指定

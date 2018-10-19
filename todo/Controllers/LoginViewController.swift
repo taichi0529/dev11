@@ -7,48 +7,48 @@
 //
 
 import UIKit
-import Firebase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UserDelegate {
+
+    let user = User.shared
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        user.delegate = self
     }
     
     
     @IBAction func didTouchNewButton(_ sender: Any) {
         if let credential = getCredential() {
-            Auth.auth().createUser(withEmail: credential.email, password: credential.password) { (result, error) in
-                if let error = error {
-                    print (error.localizedDescription)
-                    self.alert("エラー", error.localizedDescription, nil)
-                    return
-                }
-                print ("ユーザー作成成功")
-                self.presentTaskList()
-                
-            }
+            user.create(credential: credential)
         }
     }
     
     @IBAction func didTouchLoginButton(_ sender: Any) {
         if let credential = getCredential() {
-            Auth.auth().signIn(withEmail: credential.email, password: credential.password) { (result, error) in
-                if let error = error {
-                    print (error.localizedDescription)
-                    self.alert("エラー", error.localizedDescription, nil)
-                    return
-                }
-                print ("ログイン成功")
-                self.presentTaskList()
-                
-            }
+            user.login(credential: credential)
         }
+    }
+    
+    // delegate
+    func didCreate(error: Error?) {
+        if let error = error {
+            self.alert("エラー", error.localizedDescription, nil)
+            return
+        }
+        self.presentTaskList()
+    }
+    // delegate
+    func didLogin(error: Error?) {
+        if let error = error {
+            print (error.localizedDescription)
+            self.alert("エラー", error.localizedDescription, nil)
+            return
+        }
+        self.presentTaskList()
     }
     
     func getCredential() -> Credential?{

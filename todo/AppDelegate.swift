@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // ログインしていたら
-        if Auth.auth().currentUser != nil {
+        if User.shared.isLogin() {
             //Storyboardを指定
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             //Viewcontrollerを指定
