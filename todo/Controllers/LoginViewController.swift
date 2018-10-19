@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func didTouchNewButton(_ sender: Any) {
         if let credential = getCredential() {
-            Auth.auth().createUser(withEmail: credential.email, password: credential.password) { (user, error) in
+            Auth.auth().createUser(withEmail: credential.email, password: credential.password) { (result, error) in
                 if let error = error {
                     print (error.localizedDescription)
                     self.alert("エラー", error.localizedDescription, nil)
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func didTouchLoginButton(_ sender: Any) {
         if let credential = getCredential() {
-            Auth.auth().signIn(withEmail: credential.email, password: credential.password) { (user, error) in
+            Auth.auth().signIn(withEmail: credential.email, password: credential.password) { (result, error) in
                 if let error = error {
                     print (error.localizedDescription)
                     self.alert("エラー", error.localizedDescription, nil)
@@ -49,11 +49,6 @@ class LoginViewController: UIViewController {
                 
             }
         }
-    }
-    
-    struct Credential {
-        let email: String
-        let password: String
     }
     
     func getCredential() -> Credential?{
