@@ -33,6 +33,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo" id="pAJ-Qu-XSf">
+                        <barButtonItem key="leftBarButtonItem" title="logout" id="byk-ds-bBO">
+                            <connections>
+                                <action selector="didTouchLogoutButton:" destination="1h3-rH-AJr" id="2lz-6u-FUJ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="UlE-Kv-dQa">
                             <connections>
                                 <action selector="didTouchAddButton:" destination="1h3-rH-AJr" id="TVg-nk-E36"/>
@@ -149,7 +154,7 @@
         <!--Login View Controller-->
         <scene sceneID="hc8-Bh-EjG">
             <objects>
-                <viewController id="Ivq-CU-bY6" customClass="LoginViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="Ivq-CU-bY6" customClass="LoginViewController" customModule="todo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZrB-1q-49q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

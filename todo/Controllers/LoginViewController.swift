@@ -20,51 +20,54 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
     @IBAction func didTouchNewButton(_ sender: Any) {
-        getCredentials();
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                print (error.localizedDescription)
-                self.alert("エラー", error.localizedDescription, nil)
-                return
+        if let credential = getCredential() {
+            Auth.auth().createUser(withEmail: credential.email, password: credential.password) { (user, error) in
+                if let error = error {
+                    print (error.localizedDescription)
+                    self.alert("エラー", error.localizedDescription, nil)
+                    return
+                }
+                print ("ユーザー作成成功")
+                self.presentTaskList()
+                
             }
-            print ("ユーザー作成成功")
-            self.presentTaskList()
-            
-        }
-        
-    }
-    @IBAction func didTouchLoginButton(_ sender: Any) {
-        let email = emailTextField.text!
-        let password = passwordTextField.text!
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                print (error.localizedDescription)
-                self.alert("エラー", error.localizedDescription, nil)
-                return
-            }
-            print ("ログイン成功")
-            
-            self.presentTaskList()
-            
         }
     }
     
-    func getCredentials() {
+    @IBAction func didTouchLoginButton(_ sender: Any) {
+        if let credential = getCredential() {
+            Auth.auth().signIn(withEmail: credential.email, password: credential.password) { (user, error) in
+                if let error = error {
+                    print (error.localizedDescription)
+                    self.alert("エラー", error.localizedDescription, nil)
+                    return
+                }
+                print ("ログイン成功")
+                self.presentTaskList()
+                
+            }
+        }
+    }
+    
+    struct Credential {
+        let email: String
+        let password: String
+    }
+    
+    func getCredential() -> Credential?{
         let email = emailTextField.text!
         let password = passwordTextField.text!
         if (email.isEmpty) {
             self.alert("エラー", "メールアドレスを入力して下さい", nil)
-            return
+            return nil
         }
         if (password.isEmpty) {
             self.alert("エラー", "パスワードを入力して下さい", nil)
-            return
+            return nil
         }
+        return Credential(email: email, password: password)
     }
     
     func presentTaskList () {
