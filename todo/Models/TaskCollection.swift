@@ -50,20 +50,24 @@ class TaskCollection {
     
     func save () {
         // シリアル化
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: tasks, requiringSecureCoding: false) else {
-            fatalError("Can't encode data")
+        do {
+            let data = try PropertyListEncoder().encode(tasks)
+            // UserDefaultsにtasksという名前で保存
+            userDefaults.set(data, forKey: "tasks")
+        } catch {
+            fatalError ("Save Faild.")
         }
-
-        // UserDefaultsにtasksという名前で保存
-        userDefaults.set(data, forKey: "tasks")
         // デリゲートを使ってフックを作っている。保存したら実行
         delegate?.saved()
     }
     
     func load() {
         if let data = userDefaults.data(forKey: "tasks") {
-            if let tasks = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Task]{
+            do {
+                let tasks = try PropertyListDecoder().decode([Task].self, from: data)
                 self.tasks = tasks
+            } catch {
+                fatalError ("Cannot Load.")
             }
         }
     }

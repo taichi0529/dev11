@@ -8,27 +8,36 @@
 
 import UIKit
 
-class Task: NSObject, NSCoding {
+class Task: Codable {
     var title: String?
     var note: String?
     var latitude: Double?
     var longitude: Double?
     
+    enum CodingKeys: String, CodingKey {
+        case title
+        case note
+        case latitude
+        case longitude
+    }
+    
     init(title _title: String) {
         self.title = _title
     }
     
-    required init(coder decoder: NSCoder) {
-        self.title = decoder.decodeObject(forKey: "title") as? String ?? ""
-        self.note = decoder.decodeObject(forKey: "note") as? String ?? ""
-        self.latitude = decoder.decodeObject(forKey: "latitude") as? Double ?? nil
-        self.longitude = decoder.decodeObject(forKey: "longitude") as? Double ?? nil
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.note = try container.decode(String.self, forKey: .note)
+        self.latitude = try container.decode(Double.self, forKey: .latitude)
+        self.longitude = try container.decode(Double.self, forKey: .longitude)
     }
-    func encode(with coder: NSCoder) {
-        coder.encode(title, forKey: "title")
-        coder.encode(note, forKey: "note")
-        coder.encode(latitude, forKey: "latitude")
-        coder.encode(longitude, forKey: "longitude")
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(title, forKey: .title)
+        try container.encode(note, forKey: .note)
+        try container.encode(latitude, forKey: .latitude)
+        try container.encode(longitude, forKey: .longitude)
     }
     
 }
