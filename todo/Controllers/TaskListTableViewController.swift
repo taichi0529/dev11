@@ -33,7 +33,7 @@ class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
         self.tableView.reloadData()
     }
     func loaded() {
-        
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,6 +9,7 @@
 import UIKit
 
 class Task: Codable {
+    var id: String?
     var title: String?
     var note: String?
     var latitude: Double?
@@ -25,6 +26,21 @@ class Task: Codable {
         self.title = _title
     }
     
+    init(data: [String: Any]) {
+        if let title = data["title"] as? String {
+            self.title = title
+        }
+        if let note = data["note"] as? String {
+            self.note = note
+        }
+        if let latitude = data["latitude"] as? Double {
+            self.latitude = latitude
+        }
+        if let longitude = data["longitude"] as? Double {
+            self.longitude = longitude
+        }
+    }
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.title = try container.decode(String.self, forKey: .title)
@@ -38,6 +54,15 @@ class Task: Codable {
         try container.encode(note, forKey: .note)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
+    }
+    
+    func toData() -> [String: Any] {
+        return [
+            "title": self.title!,
+            "note": self.note!,
+            "latitude": self.latitude!,
+            "longitude": self.longitude!
+        ]
     }
     
 }

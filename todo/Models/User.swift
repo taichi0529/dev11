@@ -70,4 +70,8 @@ class User {
         return false
     }
     
+    func getUid () -> String? {
+        return user?.uid
+    }
+    
 }

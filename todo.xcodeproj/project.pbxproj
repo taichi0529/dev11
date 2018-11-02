@@ -25,6 +25,7 @@
 		52F03CC3218C761D0022542B /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03CC2218C761D0022542B /* TaskService.swift */; };
 		52F03CC6218C790D0022542B /* TaskRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03CC5218C790D0022542B /* TaskRepositoryProtocol.swift */; };
 		52F03CC8218C79DE0022542B /* UserDefaultsTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03CC7218C79DE0022542B /* UserDefaultsTaskRepository.swift */; };
+		52F03CCC218CA2120022542B /* FirestoreTaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03CCB218CA2110022542B /* FirestoreTaskRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		52F03CC2218C761D0022542B /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		52F03CC5218C790D0022542B /* TaskRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryProtocol.swift; sourceTree = "<group>"; };
 		52F03CC7218C79DE0022542B /* UserDefaultsTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTaskRepository.swift; sourceTree = "<group>"; };
+		52F03CCB218CA2110022542B /* FirestoreTaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTaskRepository.swift; sourceTree = "<group>"; };
 		61E840C5CA1E7BBB5CD42218 /* Pods-todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.release.xcconfig"; sourceTree = "<group>"; };
 		FF16E5DDFB4B4F7FEDB54523 /* Pods_todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 		52F03CC0218C74010022542B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				52F03CCB218CA2110022542B /* FirestoreTaskRepository.swift */,
 				52F03CC5218C790D0022542B /* TaskRepositoryProtocol.swift */,
 				52F03CC7218C79DE0022542B /* UserDefaultsTaskRepository.swift */,
 			);
@@ -346,6 +349,7 @@
 				52D2E3A42155E689000A3396 /* Task.swift in Sources */,
 				52F03CC8218C79DE0022542B /* UserDefaultsTaskRepository.swift in Sources */,
 				52900223217A6B90000ABDD7 /* WebViewController.swift in Sources */,
+				52F03CCC218CA2120022542B /* FirestoreTaskRepository.swift in Sources */,
 				52D2E39E2155DAA3000A3396 /* TaskListTableViewController.swift in Sources */,
 				529002172179CF71000ABDD7 /* User.swift in Sources */,
 				52D2E38C2155D86A000A3396 /* AppDelegate.swift in Sources */,
