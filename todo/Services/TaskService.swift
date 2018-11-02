@@ -14,9 +14,11 @@ protocol TaskServiceDelegate:class {
 
 class TaskService {
     static var shared = TaskService()
-    
-    let userDefaults = UserDefaults.standard
     private var tasks: [Task] = []
+    
+    // タスクを保存する役割を担っている
+    // どこに保存するのかは分離している
+    private let taskRepository: TaskRepositoryProtocol = UserDefaultTaskRepository()
     
     weak var delegate: TaskServiceDelegate?
     
@@ -49,29 +51,11 @@ class TaskService {
     }
     
     func save () {
-        // シリアル化
-        do {
-            let data = try PropertyListEncoder().encode(tasks)
-            // UserDefaultsにtasksという名前で保存
-            userDefaults.set(data, forKey: "tasks")
-        } catch {
-            fatalError ("Save Faild.")
-        }
+        taskRepository.save(tasks)
         // デリゲートを使ってフックを作っている。保存したら実行
         delegate?.saved()
     }
-    
     func load() {
-        if let data = userDefaults.data(forKey: "tasks") {
-            do {
-                let tasks = try PropertyListDecoder().decode([Task].self, from: data)
-                self.tasks = tasks
-            } catch {
-                fatalError ("Cannot Load.")
-            }
-        }
+        tasks = taskRepository.load()
     }
-    
-    
-    
 }
