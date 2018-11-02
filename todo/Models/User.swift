@@ -52,7 +52,7 @@ class User {
             if let error = error {
                 print (error.localizedDescription)
             } else {
-                print ("ユーザー作成成功")
+                print ("ログイン成功")
             }
             self.delegate?.didLogin(error: error)
         }
