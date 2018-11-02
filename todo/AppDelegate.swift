@@ -18,7 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("")
+        if let filePath = Bundle.main.path(forResource: "GoogleService-Info", ofType:"plist" ) {
+            let plist = NSDictionary(contentsOfFile: filePath)
+            if let apiKey = plist?["API_KEY"] as? String {
+                GMSServices.provideAPIKey(apiKey)
+            }
+        }
         FirebaseApp.configure()
         // ログインしていたら
         if User.shared.isLogin() {
