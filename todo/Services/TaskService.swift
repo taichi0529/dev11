@@ -10,6 +10,7 @@ import Foundation
 
 protocol TaskServiceDelegate:class {
     func saved()
+    func loaded()
 }
 
 class TaskService {
@@ -18,7 +19,7 @@ class TaskService {
     
     // タスクを保存する役割を担っている
     // どこに保存するのかは分離している
-    private let taskRepository: TaskRepositoryProtocol = UserDefaultTaskRepository()
+    private let taskRepository: TaskRepositoryProtocol = UserDefaultsTaskRepository()
     
     weak var delegate: TaskServiceDelegate?
     
@@ -46,16 +47,24 @@ class TaskService {
         self.save()
     }
     
+    func reset () {
+        tasks = []
+    }
+    
     func editTask () {
         self.save()
     }
     
     func save () {
-        taskRepository.save(tasks)
-        // デリゲートを使ってフックを作っている。保存したら実行
-        delegate?.saved()
+        taskRepository.save(tasks) {
+            // デリゲートを使ってフックを作っている。保存したら実行
+            self.delegate?.saved()
+        }
     }
     func load() {
-        tasks = taskRepository.load()
+        taskRepository.load(completion: { (tasks) in
+            self.tasks = tasks
+            self.delegate?.loaded()
+        })
     }
 }

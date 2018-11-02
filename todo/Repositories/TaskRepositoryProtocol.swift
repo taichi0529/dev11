@@ -9,6 +9,6 @@
 import Foundation
 
 protocol TaskRepositoryProtocol:class {
-    func save(_ tasks: [Task])
-    func load() -> [Task]
+    func save(_ tasks: [Task], completion: (()->Void)?)
+    func load(completion: (([Task])->Void)?)
 }

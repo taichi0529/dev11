@@ -8,10 +8,11 @@
 
 import Foundation
 
-class UserDefaultTaskRepository: TaskRepositoryProtocol {
+class UserDefaultsTaskRepository: TaskRepositoryProtocol {
+
     let userDefaults = UserDefaults.standard
     
-    func save(_ tasks: [Task]) {
+    func save(_ tasks: [Task], completion: (() -> Void)?) {
         // シリアル化
         do {
             let data = try PropertyListEncoder().encode(tasks)
@@ -20,17 +21,22 @@ class UserDefaultTaskRepository: TaskRepositoryProtocol {
         } catch {
             fatalError ("Save Faild.")
         }
+        if let completion = completion {
+            completion()
+        }
     }
     
-    func load() -> [Task] {
+    func load(completion: (([Task]) -> Void)?) {
+        var tasks: [Task] = [];
         if let data = userDefaults.data(forKey: "tasks") {
             do {
-                let tasks = try PropertyListDecoder().decode([Task].self, from: data)
-                return tasks
+                tasks = try PropertyListDecoder().decode([Task].self, from: data)
             } catch {
                 fatalError ("Cannot Load.")
             }
         }
-        return []
+        if let completion = completion {
+            completion(tasks)
+        }
     }
 }
