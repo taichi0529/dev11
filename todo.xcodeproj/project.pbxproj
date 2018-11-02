@@ -116,7 +116,7 @@
 				52F03CC1218C74FB0022542B /* Services */,
 				52F03CC0218C74010022542B /* Repositories */,
 				5290021A2179D801000ABDD7 /* Extensions */,
-				52D2E3A02155E584000A3396 /* Models */,
+				52D2E3A02155E584000A3396 /* Entity */,
 				52D2E39F2155E553000A3396 /* Controllers */,
 				5290021F217A5614000ABDD7 /* Storyboards */,
 				52D2E38B2155D86A000A3396 /* AppDelegate.swift */,
@@ -139,14 +139,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		52D2E3A02155E584000A3396 /* Models */ = {
+		52D2E3A02155E584000A3396 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				52D2E3A32155E689000A3396 /* Task.swift */,
 				529002162179CF71000ABDD7 /* User.swift */,
 				52900220217A580B000ABDD7 /* Credential.swift */,
 			);
-			path = Models;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		52F03CC0218C74010022542B /* Repositories */ = {
