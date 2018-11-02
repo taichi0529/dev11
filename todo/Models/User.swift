@@ -60,6 +60,7 @@ class User {
     
     func logout () {
         try! Auth.auth().signOut()
+        print (isLogin())
     }
     
     func isLogin () -> Bool {

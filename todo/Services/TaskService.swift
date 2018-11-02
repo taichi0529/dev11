@@ -1,5 +1,5 @@
 //
-//  TaskCollection.swift
+//  TaskService.swift
 //  todo
 //
 //  Created by 中村太一 on 2018/09/22.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-protocol TaskCollectionDelegate:class {
+protocol TaskServiceDelegate:class {
     func saved()
 }
 
-class TaskCollection {
-    static var shared = TaskCollection()
+class TaskService {
+    static var shared = TaskService()
     
     let userDefaults = UserDefaults.standard
     private var tasks: [Task] = []
     
-    weak var delegate: TaskCollectionDelegate?
+    weak var delegate: TaskServiceDelegate?
     
     private init() {
         self.load()

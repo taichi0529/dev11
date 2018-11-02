@@ -8,9 +8,9 @@
 
 import UIKit
 
-class TaskListTableViewController: UITableViewController, TaskCollectionDelegate {
+class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
     
-    let taskCollection = TaskCollection.shared
+    let taskCollection = TaskService.shared
     let user = User.shared
 
     override func viewDidLoad() {

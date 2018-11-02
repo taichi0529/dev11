@@ -22,7 +22,7 @@
 		52D2E39E2155DAA3000A3396 /* TaskListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2E39D2155DAA3000A3396 /* TaskListTableViewController.swift */; };
 		52D2E3A22155E603000A3396 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2E3A12155E603000A3396 /* TaskViewController.swift */; };
 		52D2E3A42155E689000A3396 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2E3A32155E689000A3396 /* Task.swift */; };
-		52D2E3A62155E91A000A3396 /* TaskCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D2E3A52155E91A000A3396 /* TaskCollection.swift */; };
+		52F03CC3218C761D0022542B /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F03CC2218C761D0022542B /* TaskService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +43,7 @@
 		52D2E39D2155DAA3000A3396 /* TaskListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListTableViewController.swift; sourceTree = "<group>"; };
 		52D2E3A12155E603000A3396 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		52D2E3A32155E689000A3396 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		52D2E3A52155E91A000A3396 /* TaskCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCollection.swift; sourceTree = "<group>"; };
+		52F03CC2218C761D0022542B /* TaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		61E840C5CA1E7BBB5CD42218 /* Pods-todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.release.xcconfig"; sourceTree = "<group>"; };
 		FF16E5DDFB4B4F7FEDB54523 /* Pods_todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -107,6 +107,8 @@
 		52D2E38A2155D86A000A3396 /* todo */ = {
 			isa = PBXGroup;
 			children = (
+				52F03CC1218C74FB0022542B /* Services */,
+				52F03CC0218C74010022542B /* Repositories */,
 				5290021A2179D801000ABDD7 /* Extensions */,
 				52D2E3A02155E584000A3396 /* Models */,
 				52D2E39F2155E553000A3396 /* Controllers */,
@@ -135,11 +137,25 @@
 			isa = PBXGroup;
 			children = (
 				52D2E3A32155E689000A3396 /* Task.swift */,
-				52D2E3A52155E91A000A3396 /* TaskCollection.swift */,
 				529002162179CF71000ABDD7 /* User.swift */,
 				52900220217A580B000ABDD7 /* Credential.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		52F03CC0218C74010022542B /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		52F03CC1218C74FB0022542B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				52F03CC2218C761D0022542B /* TaskService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		EA9911F86CBE0481596D1273 /* Frameworks */ = {
@@ -231,16 +247,34 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-todo/Pods-todo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52F03CC3218C761D0022542B /* TaskService.swift in Sources */,
 				529002192179D791000ABDD7 /* LoginViewController.swift in Sources */,
 				52900221217A580B000ABDD7 /* Credential.swift in Sources */,
 				52D2E3A42155E689000A3396 /* Task.swift in Sources */,
@@ -306,7 +341,6 @@
 				52D2E39E2155DAA3000A3396 /* TaskListTableViewController.swift in Sources */,
 				529002172179CF71000ABDD7 /* User.swift in Sources */,
 				52D2E38C2155D86A000A3396 /* AppDelegate.swift in Sources */,
-				52D2E3A62155E91A000A3396 /* TaskCollection.swift in Sources */,
 				5290021C2179D815000ABDD7 /* UIViewController.swift in Sources */,
 				52D2E3A22155E603000A3396 /* TaskViewController.swift in Sources */,
 			);

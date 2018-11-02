@@ -11,7 +11,7 @@ import GoogleMaps
 
 class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
-    let taskCollection = TaskCollection.shared
+    let taskCollection = TaskService.shared
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
