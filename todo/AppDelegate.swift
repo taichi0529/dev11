@@ -18,9 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey("AIzaSyAXQlksHUYHzYU1F_qSi-kZEsGDe-d4FnU")
+        GMSServices.provideAPIKey("")
         FirebaseApp.configure()
-        
         // ログインしていたら
         if User.shared.isLogin() {
             //Storyboardを指定
