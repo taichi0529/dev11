@@ -19,12 +19,12 @@ class TaskService {
     
     // タスクを保存する役割を担っている
     // どこに保存するのかは分離している
-    private let taskRepository: TaskRepositoryProtocol = FirestoreTaskRepository()
+    private var taskRepository: TaskRepositoryProtocol = FirestoreTaskRepository()
     
     weak var delegate: TaskServiceDelegate?
     
     private init() {
-        self.load()
+
     }
     
     func getTask (at: Int) -> Task{

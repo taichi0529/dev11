@@ -13,6 +13,12 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
 
     let db = Firestore.firestore()
     
+    init(){
+        let settings = db.settings
+        settings.areTimestampsInSnapshotsEnabled = true
+        db.settings = settings
+    }
+    
     // ユーザー毎のデータベースへの参照を取得する
     private func getCollectionRef () -> CollectionReference {
         guard let uid = User.shared.getUid() else {
@@ -21,7 +27,7 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
         return db.collection("users").document(uid).collection("tasks")
     }
     
-    func save(_ tasks: [Task], completion: (() -> Void)?) {
+    func save(_ tasks: [Task], completion: (() -> Void)) {
         // TODO トランザクション
         let collectionRef = getCollectionRef()
         tasks.forEach { (task) in
@@ -36,20 +42,17 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
         }
         
         // firestoreへの保存は非同期ではない（後でバックグラウンドで同期をしている？）
-        if let completion = completion {
-            completion()
-        }
+        completion()
     }
     
-    func load(completion: (([Task]) -> Void)?) {
+    func load(completion: @escaping (([Task]) -> Void)) {
+        print ("データロード")
         var tasks: [Task] = [];
         let collectionRef = getCollectionRef()
         collectionRef.getDocuments { (querySnapshot, error) in
             if let error = error {
                 print (error.localizedDescription)
-                return
-            }
-            if let documents = querySnapshot?.documents {
+            }else if let documents = querySnapshot?.documents {
                 documents.forEach({ (document) in
                     if document.exists {
                         let data = document.data()
@@ -58,9 +61,7 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
                     }
                 })
             }
-            if let completion = completion {
-                completion(tasks)
-            }
+            completion(tasks)
         }
 
     }

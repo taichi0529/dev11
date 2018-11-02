@@ -22,13 +22,15 @@ class User {
     /*
     private var user: FirebaseAuth.User? = Auth.auth().currentUser
     としてしまうとこのクラスが読み込まれたときに`Auth.auth().currentUser`が実行されてしまい、
-    その時点ではAppDelegateが実行されていないのでエラーになる。
+    その時点ではAppDelegateのapplicationDidFinishLaunchingWithOptionsが実行されていない?のでエラーになる。
+    なのでlazyが必要。コメントアウト下みたいにgetでもOK
     */
-    private var user: FirebaseAuth.User? {
-        get {
-            return Auth.auth().currentUser
-        }
-    }
+//    private var user: FirebaseAuth.User? {
+//        get {
+//            return Auth.auth().currentUser
+//        }
+//    }
+    lazy private var user: FirebaseAuth.User? = Auth.auth().currentUser
     
     
     weak var delegate: UserDelegate?

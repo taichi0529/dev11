@@ -12,7 +12,7 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
 
     let userDefaults = UserDefaults.standard
     
-    func save(_ tasks: [Task], completion: (() -> Void)?) {
+    func save(_ tasks: [Task], completion: (() -> Void)) {
         // シリアル化
         do {
             let data = try PropertyListEncoder().encode(tasks)
@@ -21,12 +21,10 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
         } catch {
             fatalError ("Save Faild.")
         }
-        if let completion = completion {
-            completion()
-        }
+        completion()
     }
     
-    func load(completion: (([Task]) -> Void)?) {
+    func load(completion: (([Task]) -> Void)) {
         var tasks: [Task] = [];
         if let data = userDefaults.data(forKey: "tasks") {
             do {
@@ -35,8 +33,6 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
                 fatalError ("Cannot Load.")
             }
         }
-        if let completion = completion {
-            completion(tasks)
-        }
+        completion(tasks)
     }
 }

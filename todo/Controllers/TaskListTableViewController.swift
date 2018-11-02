@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
 
@@ -17,13 +18,9 @@ class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        HUD.show(.progress)
         taskService.delegate = self
+        taskService.load()
         
     }
     
@@ -34,6 +31,7 @@ class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
     }
     func loaded() {
         self.tableView.reloadData()
+        HUD.hide()
     }
     
     override func viewWillAppear(_ animated: Bool) {
