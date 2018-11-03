@@ -13,6 +13,7 @@ protocol TaskServiceDelegate:class {
     func loaded()
 }
 
+// 授業ではTaskCollectionという名前でしたが変更しています。
 class TaskService {
     static var shared = TaskService()
     private var tasks: [Task] = []
@@ -64,6 +65,7 @@ class TaskService {
     func load() {
         taskRepository.load(completion: { (tasks) in
             self.tasks = tasks
+            // デリゲートでフック。読み出したら実行
             self.delegate?.loaded()
         })
     }

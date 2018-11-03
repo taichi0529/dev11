@@ -21,6 +21,7 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
         } catch {
             fatalError ("Save Faild.")
         }
+        // UserDefaultsは特に非同期ではないので普通にcomletionを実行しています
         completion()
     }
     
@@ -33,6 +34,7 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
                 fatalError ("Cannot Load.")
             }
         }
+        // UserDefaultsは特に非同期ではないので普通にcomletionを実行しています
         completion(tasks)
     }
 }

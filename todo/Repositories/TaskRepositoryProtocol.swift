@@ -9,6 +9,7 @@
 import Foundation
 
 protocol TaskRepositoryProtocol:class {
+    // データを保存・読み込みしたらcompletionを実行します。
     func save(_ tasks: [Task], completion: (()->Void))
     func load(completion: (@escaping ([Task])->Void))
 }

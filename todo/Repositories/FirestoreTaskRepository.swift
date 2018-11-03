@@ -61,6 +61,8 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
                     }
                 })
             }
+            // Firestoreからデータを読み込み終わったら
+            // Firestoreの機能としてはデータが変更されたらというイベントもあるのでそちらも設定すると別端末で更新されたときにリアルタイムで更新ができる。
             completion(tasks)
         }
 

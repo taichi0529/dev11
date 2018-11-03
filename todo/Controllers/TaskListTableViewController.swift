@@ -18,13 +18,13 @@ class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        HUD.show(.progress)
+        HUD.show(.progress) // くるくるまわるやつ。UIActivityIndicatorViewってのがデフォルトであるけれど見た目も使い勝手もイマイチなので。
         taskService.delegate = self
         taskService.load()
         
     }
     
-    // デリゲート
+    // TaskServiceDelegate
     func saved() {
         print ("saved")
         self.tableView.reloadData()
