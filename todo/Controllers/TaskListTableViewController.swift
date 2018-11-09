@@ -99,6 +99,7 @@ class TaskListTableViewController: UITableViewController, TaskServiceDelegate {
     // スワイプで削除
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         taskService.removeTask(at: indexPath.row)
+        taskService.save()
     }
 
 }

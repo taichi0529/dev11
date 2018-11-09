@@ -39,21 +39,15 @@ class TaskService {
     // タスクの追加
     func addTask (_ task: Task) {
         tasks.append(task)
-        self.save()
     }
     
-    // タスクの削除
+    // タスクフラグを立てる
     func removeTask (at: Int) {
         tasks[at].deleted = true
-        self.save()
     }
     
     func reset () {
         tasks = []
-    }
-    
-    func editTask () {
-        self.save()
     }
     
     func save () {
