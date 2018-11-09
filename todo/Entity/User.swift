@@ -25,12 +25,12 @@ class User {
     その時点ではAppDelegateのapplicationDidFinishLaunchingWithOptionsが実行されていない?のでエラーになる。
     なのでlazyが必要。コメントアウト下みたいにgetでもOK
     */
-//    private var user: FirebaseAuth.User? {
-//        get {
-//            return Auth.auth().currentUser
-//        }
-//    }
-    lazy private var user: FirebaseAuth.User? = Auth.auth().currentUser
+    private var user: FirebaseAuth.User? {
+        get {
+            return Auth.auth().currentUser
+        }
+    }
+//    lazy private var user: FirebaseAuth.User? = Auth.auth().currentUser
     
     
     weak var delegate: UserDelegate?
