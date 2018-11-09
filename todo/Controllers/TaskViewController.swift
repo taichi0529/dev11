@@ -11,7 +11,7 @@ import GoogleMaps
 
 class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
     
-    let taskCollection = TaskService.shared
+    let taskService = TaskService.shared
 
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var noteTextView: UITextView!
@@ -93,13 +93,13 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             selectedTask.note = noteTextView.text
             selectedTask.latitude = marker.position.latitude
             selectedTask.longitude = marker.position.longitude
-            taskCollection.editTask()
+            taskService.editTask()
         } else {
             let task = Task(title: title)
             task.note = noteTextView.text
             task.latitude = marker.position.latitude
             task.longitude = marker.position.longitude
-            taskCollection.addTask(task)
+            taskService.addTask(task)
         }
         
         self.navigationController?.popViewController(animated: true)
