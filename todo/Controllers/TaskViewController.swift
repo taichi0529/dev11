@@ -25,6 +25,9 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
     var zoomLevel: Float = 14.0
     let defaultLatitude = 35.6675497
     let defaultLongitude = 139.7137988
+    
+    var didChangeImage = false
+    
     @IBOutlet weak var todoImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -102,7 +105,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             task.longitude = marker.position.longitude
             taskService.addTask(task)
         }
-        
+        self.didChangeImage = false
         self.navigationController?.popViewController(animated: true)
         
     }
@@ -166,6 +169,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             self.todoImageView.contentMode = .scaleAspectFit
             self.todoImageView.image = pickedImage.resize(size: CGSize(width: 300, height: 300))
+            self.didChangeImage = true
         }
         
         //閉じる処理
