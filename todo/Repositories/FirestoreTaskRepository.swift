@@ -31,11 +31,18 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
         // TODO トランザクション
         let collectionRef = getCollectionRef()
         tasks.forEach { (task) in
+            // 削除フラグが立っていたら削除する
+            if task.deleted {
+                if let id = task.id {
+                    let documentRef = collectionRef.document(id)
+                    documentRef.delete()
+                }
+                return
+            }
             if let id = task.id {
                 let documentRef = collectionRef.document(id)
                 documentRef.setData(task.toData())
             } else {
-                
                 let documentRef = collectionRef.addDocument(data: task.toData())
                 task.id = documentRef.documentID
             }

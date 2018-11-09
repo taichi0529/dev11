@@ -44,7 +44,7 @@ class TaskService {
     
     // タスクの削除
     func removeTask (at: Int) {
-        tasks.remove(at: at)
+        tasks[at].deleted = true
         self.save()
     }
     
@@ -58,6 +58,8 @@ class TaskService {
     
     func save () {
         taskRepository.save(tasks) {
+            // 削除フラグが立っているタスクを消している
+            self.tasks = self.tasks.filter { $0.deleted == false }
             // デリゲートを使ってフックを作っている。保存したら実行
             self.delegate?.saved()
         }

@@ -14,6 +14,7 @@ class Task: Codable {
     var note: String?
     var latitude: Double?
     var longitude: Double?
+    var deleted = false
     
     enum CodingKeys: String, CodingKey {
         case title

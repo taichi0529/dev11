@@ -12,7 +12,8 @@ class UserDefaultsTaskRepository: TaskRepositoryProtocol {
 
     let userDefaults = UserDefaults.standard
     
-    func save(_ tasks: [Task], completion: (() -> Void)) {
+    func save(_ _tasks: [Task], completion: (() -> Void)) {
+        let tasks = _tasks.filter { $0.deleted == false }
         // シリアル化
         do {
             let data = try PropertyListEncoder().encode(tasks)
