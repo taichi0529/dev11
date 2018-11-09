@@ -125,6 +125,20 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         titleTextField.resignFirstResponder()
     }
     
+    // カメラかアルバムを表示
+    func presentPicker (souceType souceType:UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(souceType) {
+            let cameraPicker = UIImagePickerController()
+            cameraPicker.sourceType = souceType
+            cameraPicker.delegate = self
+            self.present(cameraPicker, animated: true, completion: nil)
+            
+        } else {
+            print ("The SouceType is not found.")
+        }
+    }
+    
+    
     
     @IBAction func didTouchTodoImageView(_ sender: Any) {
         // アクションシートを表示
@@ -132,29 +146,13 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         alert.addAction(UIAlertAction(title: "カメラ", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             print("カメラ")
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
-                let cameraPicker = UIImagePickerController()
-                cameraPicker.sourceType = UIImagePickerController.SourceType.camera
-                cameraPicker.delegate = self
-                self.present(cameraPicker, animated: true, completion: nil)
-                
-            } else {
-                print ("カメラ使えない")
-            }
+            self.presentPicker(souceType: .camera)
             
         }))
         alert.addAction(UIAlertAction(title: "アルバム", style: UIAlertAction.Style.default, handler: {
             (action: UIAlertAction!) in
             print("アルバム")
-            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
-                let cameraPicker = UIImagePickerController()
-                cameraPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
-                cameraPicker.delegate = self
-                self.present(cameraPicker, animated: true, completion: nil)
-                
-            } else {
-                print ("アルバム使えない")
-            }
+            self.presentPicker(souceType: .photoLibrary)
         }))
         alert.addAction(UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
             (action: UIAlertAction!) in
@@ -163,6 +161,17 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         self.present(alert, animated: true, completion: nil)
     }
     
+    //　撮影もしくは画像を選択したら呼ばれる
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.todoImageView.contentMode = .scaleAspectFit
+            self.todoImageView.image = pickedImage.resize(size: CGSize(width: 300, height: 300))
+        }
+        
+        //閉じる処理
+        picker.dismiss(animated: true, completion: nil)
+        
+    }
 
 
 }

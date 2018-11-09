@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49782A7F820BFAF1F4AABC2F /* Pods_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF16E5DDFB4B4F7FEDB54523 /* Pods_todo.framework */; };
+		523FF4B22196171D00363B52 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FF4B12196171D00363B52 /* UIImage.swift */; };
 		529002152179CA9F000ABDD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529002142179CA9F000ABDD7 /* GoogleService-Info.plist */; };
 		529002172179CF71000ABDD7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002162179CF71000ABDD7 /* User.swift */; };
 		529002192179D791000ABDD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002182179D791000ABDD7 /* LoginViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0AE297A279A78C545A50E881 /* Pods-todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.debug.xcconfig"; sourceTree = "<group>"; };
+		523FF4B12196171D00363B52 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		529002142179CA9F000ABDD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529002162179CF71000ABDD7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		529002182179D791000ABDD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				5290021B2179D815000ABDD7 /* UIViewController.swift */,
+				523FF4B12196171D00363B52 /* UIImage.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -276,6 +280,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -355,6 +360,7 @@
 				52D2E38C2155D86A000A3396 /* AppDelegate.swift in Sources */,
 				5290021C2179D815000ABDD7 /* UIViewController.swift in Sources */,
 				52D2E3A22155E603000A3396 /* TaskViewController.swift in Sources */,
+				523FF4B22196171D00363B52 /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
