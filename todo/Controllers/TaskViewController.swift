@@ -87,19 +87,18 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             showAlert("タイトルを入力して下さい。")
             return
         }
-
+        
+        var targetTask = Task()
         if let selectedTask = self.selectedTask {
-            selectedTask.title = title
-            selectedTask.note = noteTextView.text
-            selectedTask.latitude = marker.position.latitude
-            selectedTask.longitude = marker.position.longitude
+            targetTask = selectedTask
         } else {
-            let task = Task(title: title)
-            task.note = noteTextView.text
-            task.latitude = marker.position.latitude
-            task.longitude = marker.position.longitude
-            taskService.addTask(task)
+            taskService.addTask(targetTask)
         }
+        
+        targetTask.title = title
+        targetTask.note = noteTextView.text
+        targetTask.latitude = marker.position.latitude
+        targetTask.longitude = marker.position.longitude
         taskService.save()
         
         self.navigationController?.popViewController(animated: true)
