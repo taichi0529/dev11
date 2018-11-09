@@ -56,12 +56,12 @@ class Task: Codable {
         try container.encode(longitude, forKey: .longitude)
     }
     
-    func toData() -> [String: Any] {
+    func toData() -> [String: Any?] {
         return [
-            "title": self.title!,
-            "note": self.note!,
-            "latitude": self.latitude!,
-            "longitude": self.longitude!
+            "title": self.title,
+            "note": self.note,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
         ]
     }
     
