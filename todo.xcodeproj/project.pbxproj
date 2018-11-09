@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49782A7F820BFAF1F4AABC2F /* Pods_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF16E5DDFB4B4F7FEDB54523 /* Pods_todo.framework */; };
+		523FF4B92196230A00363B52 /* ImageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FF4B82196230A00363B52 /* ImageRepositoryProtocol.swift */; };
 		529002152179CA9F000ABDD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529002142179CA9F000ABDD7 /* GoogleService-Info.plist */; };
 		529002172179CF71000ABDD7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002162179CF71000ABDD7 /* User.swift */; };
 		529002192179D791000ABDD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002182179D791000ABDD7 /* LoginViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0AE297A279A78C545A50E881 /* Pods-todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.debug.xcconfig"; sourceTree = "<group>"; };
+		523FF4B82196230A00363B52 /* ImageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryProtocol.swift; sourceTree = "<group>"; };
 		529002142179CA9F000ABDD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529002162179CF71000ABDD7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		529002182179D791000ABDD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,24 @@
 				61E840C5CA1E7BBB5CD42218 /* Pods-todo.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		523FF4B52196201100363B52 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				52F03CCB218CA2110022542B /* FirestoreTaskRepository.swift */,
+				52F03CC5218C790D0022542B /* TaskRepositoryProtocol.swift */,
+				52F03CC7218C79DE0022542B /* UserDefaultsTaskRepository.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		523FF4B62196202800363B52 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				523FF4B82196230A00363B52 /* ImageRepositoryProtocol.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		5290021A2179D801000ABDD7 /* Extensions */ = {
@@ -152,9 +172,8 @@
 		52F03CC0218C74010022542B /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				52F03CCB218CA2110022542B /* FirestoreTaskRepository.swift */,
-				52F03CC5218C790D0022542B /* TaskRepositoryProtocol.swift */,
-				52F03CC7218C79DE0022542B /* UserDefaultsTaskRepository.swift */,
+				523FF4B62196202800363B52 /* Image */,
+				523FF4B52196201100363B52 /* Task */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -351,6 +370,7 @@
 				52900223217A6B90000ABDD7 /* WebViewController.swift in Sources */,
 				52F03CCC218CA2120022542B /* FirestoreTaskRepository.swift in Sources */,
 				52D2E39E2155DAA3000A3396 /* TaskListTableViewController.swift in Sources */,
+				523FF4B92196230A00363B52 /* ImageRepositoryProtocol.swift in Sources */,
 				529002172179CF71000ABDD7 /* User.swift in Sources */,
 				52D2E38C2155D86A000A3396 /* AppDelegate.swift in Sources */,
 				5290021C2179D815000ABDD7 /* UIViewController.swift in Sources */,
