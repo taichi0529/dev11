@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import PKHUD
 
 class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -105,10 +106,12 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         targetTask.latitude = marker.position.latitude
         targetTask.longitude = marker.position.longitude
         if didChangeImage {
+            HUD.show(.progress)
             taskService.saveImage(image: todoImageView.image) { (imageUrl) in
                 targetTask.imageUrl = imageUrl
                 self.taskService.save()
                 self.didChangeImage = false
+                HUD.hide()
                 self.navigationController?.popViewController(animated: true)
             }
         } else {
