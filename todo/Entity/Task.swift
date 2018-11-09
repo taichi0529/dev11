@@ -23,8 +23,7 @@ class Task: Codable {
         case longitude
     }
     
-    init(title _title: String) {
-        self.title = _title
+    init() {
     }
     
     init(data: [String: Any]) {
