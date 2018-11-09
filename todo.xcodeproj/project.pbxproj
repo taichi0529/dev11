@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		49782A7F820BFAF1F4AABC2F /* Pods_todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF16E5DDFB4B4F7FEDB54523 /* Pods_todo.framework */; };
 		523FF4B92196230A00363B52 /* ImageRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FF4B82196230A00363B52 /* ImageRepositoryProtocol.swift */; };
+		523FF4BB219628C900363B52 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523FF4BA219628C900363B52 /* UIImage.swift */; };
 		529002152179CA9F000ABDD7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 529002142179CA9F000ABDD7 /* GoogleService-Info.plist */; };
 		529002172179CF71000ABDD7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002162179CF71000ABDD7 /* User.swift */; };
 		529002192179D791000ABDD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 529002182179D791000ABDD7 /* LoginViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		0AE297A279A78C545A50E881 /* Pods-todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-todo/Pods-todo.debug.xcconfig"; sourceTree = "<group>"; };
 		523FF4B82196230A00363B52 /* ImageRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepositoryProtocol.swift; sourceTree = "<group>"; };
+		523FF4BA219628C900363B52 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		529002142179CA9F000ABDD7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		529002162179CF71000ABDD7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		529002182179D791000ABDD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		5290021A2179D801000ABDD7 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				523FF4BA219628C900363B52 /* UIImage.swift */,
 				5290021B2179D815000ABDD7 /* UIViewController.swift */,
 			);
 			path = Extensions;
@@ -278,6 +281,7 @@
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
@@ -295,6 +299,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
@@ -367,6 +372,7 @@
 				52900221217A580B000ABDD7 /* Credential.swift in Sources */,
 				52D2E3A42155E689000A3396 /* Task.swift in Sources */,
 				52F03CC8218C79DE0022542B /* UserDefaultsTaskRepository.swift in Sources */,
+				523FF4BB219628C900363B52 /* UIImage.swift in Sources */,
 				52900223217A6B90000ABDD7 /* WebViewController.swift in Sources */,
 				52F03CCC218CA2120022542B /* FirestoreTaskRepository.swift in Sources */,
 				52D2E39E2155DAA3000A3396 /* TaskListTableViewController.swift in Sources */,
