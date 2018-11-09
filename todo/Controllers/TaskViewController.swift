@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMaps
 
-class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     let taskCollection = TaskService.shared
 
@@ -25,6 +25,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
     var zoomLevel: Float = 14.0
     let defaultLatitude = 35.6675497
     let defaultLongitude = 139.7137988
+    @IBOutlet weak var todoImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -125,15 +126,43 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func didTouchTodoImageView(_ sender: Any) {
+        // アクションシートを表示
+        let alert = UIAlertController(title:"", message: "選択してください", preferredStyle: UIAlertController.Style.actionSheet)
+        alert.addAction(UIAlertAction(title: "カメラ", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("カメラ")
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+                let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = UIImagePickerController.SourceType.camera
+                cameraPicker.delegate = self
+                self.present(cameraPicker, animated: true, completion: nil)
+                
+            } else {
+                print ("カメラ使えない")
+            }
+            
+        }))
+        alert.addAction(UIAlertAction(title: "アルバム", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("アルバム")
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary) {
+                let cameraPicker = UIImagePickerController()
+                cameraPicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+                cameraPicker.delegate = self
+                self.present(cameraPicker, animated: true, completion: nil)
+                
+            } else {
+                print ("アルバム使えない")
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler: {
+            (action: UIAlertAction!) in
+            print("キャンセル")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
-    */
+    
+
 
 }
