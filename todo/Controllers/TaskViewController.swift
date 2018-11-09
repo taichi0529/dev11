@@ -45,6 +45,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
                 self.marker.position.latitude = latitude
                 self.marker.position.longitude = longitude
             }
+            taskService.loadImage(task: selectedTask, imageView: todoImageView)
         }
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))

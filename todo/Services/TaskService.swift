@@ -99,15 +99,11 @@ class TaskService {
             }
         }
     }
-//
-//    func loadImage(imageView: UIImageView) {
-//        guard let url = self.imageUrl else {
-//            return
-//        }
-//        let req = URLRequest(url: URL(string: image.url)!,
-//                             cachePolicy: .returnCacheDataElseLoad,
-//                             timeoutInterval: 10)
-//        Nuke.loadImage(with: req, into: imageView)
-////        Nuke.loadImage(with: URL(string: url)!, into: imageView)
-//    }
+
+    func loadImage(task: Task, imageView: UIImageView) {
+        guard let url = task.imageUrl else {
+            return
+        }        
+        Nuke.loadImage(with: URL(string: url)!, into: imageView)
+    }
 }
