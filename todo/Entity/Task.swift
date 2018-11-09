@@ -14,16 +14,21 @@ class Task: Codable {
     var note: String?
     var latitude: Double?
     var longitude: Double?
+    var imageUrl: String?
+    
     var deleted = false
+    var image: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case title
         case note
         case latitude
         case longitude
+        case imageUrl
     }
     
     init() {
+
     }
     
     init(data: [String: Any]) {
@@ -39,6 +44,9 @@ class Task: Codable {
         if let longitude = data["longitude"] as? Double {
             self.longitude = longitude
         }
+        if let imageUrl = data["imageUrl"] as? String {
+            self.imageUrl = imageUrl
+        }
     }
     
     required init(from decoder: Decoder) throws {
@@ -47,6 +55,7 @@ class Task: Codable {
         self.note = try container.decode(String.self, forKey: .note)
         self.latitude = try container.decode(Double.self, forKey: .latitude)
         self.longitude = try container.decode(Double.self, forKey: .longitude)
+        self.imageUrl = try container.decode(String.self, forKey: .imageUrl)
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
@@ -54,6 +63,7 @@ class Task: Codable {
         try container.encode(note, forKey: .note)
         try container.encode(latitude, forKey: .latitude)
         try container.encode(longitude, forKey: .longitude)
+        try container.encode(imageUrl, forKey: .imageUrl)
     }
     
     func toData() -> [String: Any?] {
@@ -62,6 +72,7 @@ class Task: Codable {
             "note": self.note,
             "latitude": self.latitude,
             "longitude": self.longitude,
+            "imageUrl": self.imageUrl,
         ]
     }
     

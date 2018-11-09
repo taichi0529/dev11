@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Nuke
+import FirebaseStorage
 
 protocol TaskServiceDelegate:class {
     func saved()
@@ -65,4 +67,47 @@ class TaskService {
             self.delegate?.loaded()
         })
     }
+    
+    func saveImage(image: UIImage?, completion: @escaping ((_ imageUrl: String?)->Void)){
+        guard let image = image else {
+            completion(nil)
+            return
+        }
+        let storageRef = Storage.storage().reference()
+        let currentTime = String(Int(floor(NSDate().timeIntervalSince1970 * 100000)))
+        
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpeg"
+        //画像を非同期にアップロード
+        let dataRef = storageRef.child("\(currentTime).jpg")
+        let data = image.jpegData(compressionQuality: 0.5)
+        dataRef.putData(data!, metadata: metadata) { (metadata, error) in
+            guard let metadata = metadata else {
+                print (error.debugDescription)
+                completion(nil)
+                return
+            }
+            let size = metadata.size
+            print (size)
+            dataRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                    print (error.debugDescription)
+                    completion(nil)
+                    return
+                }
+                completion(downloadURL.absoluteString)
+            }
+        }
+    }
+//
+//    func loadImage(imageView: UIImageView) {
+//        guard let url = self.imageUrl else {
+//            return
+//        }
+//        let req = URLRequest(url: URL(string: image.url)!,
+//                             cachePolicy: .returnCacheDataElseLoad,
+//                             timeoutInterval: 10)
+//        Nuke.loadImage(with: req, into: imageView)
+////        Nuke.loadImage(with: URL(string: url)!, into: imageView)
+//    }
 }

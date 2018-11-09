@@ -103,10 +103,18 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
         targetTask.note = noteTextView.text
         targetTask.latitude = marker.position.latitude
         targetTask.longitude = marker.position.longitude
-        taskService.save()
-        self.didChangeImage = false
-        self.navigationController?.popViewController(animated: true)
-        
+        if didChangeImage {
+            taskService.saveImage(image: todoImageView.image) { (imageUrl) in
+                targetTask.imageUrl = imageUrl
+                self.taskService.save()
+                self.didChangeImage = false
+                self.navigationController?.popViewController(animated: true)
+            }
+        } else {
+            self.taskService.save()
+            self.didChangeImage = false
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -128,7 +136,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
     }
     
     // カメラかアルバムを表示
-    func presentPicker (souceType souceType:UIImagePickerController.SourceType) {
+    func presentPicker (souceType:UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(souceType) {
             let cameraPicker = UIImagePickerController()
             cameraPicker.sourceType = souceType
