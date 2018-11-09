@@ -57,6 +57,7 @@ class FirestoreTaskRepository: TaskRepositoryProtocol {
                     if document.exists {
                         let data = document.data()
                         let task = Task(data: data)
+                        task.id = document.documentID
                         tasks.append(task)
                     }
                 })
