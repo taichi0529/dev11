@@ -93,7 +93,6 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             selectedTask.note = noteTextView.text
             selectedTask.latitude = marker.position.latitude
             selectedTask.longitude = marker.position.longitude
-            taskService.editTask()
         } else {
             let task = Task(title: title)
             task.note = noteTextView.text
@@ -101,6 +100,7 @@ class TaskViewController: UIViewController, GMSMapViewDelegate, CLLocationManage
             task.longitude = marker.position.longitude
             taskService.addTask(task)
         }
+        taskService.save()
         
         self.navigationController?.popViewController(animated: true)
         
